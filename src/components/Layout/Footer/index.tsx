@@ -1,5 +1,4 @@
 import Link from "next/link";
-import { Icon } from "@iconify/react";
 
 const Footer = () => {
   return (
@@ -16,10 +15,9 @@ const Footer = () => {
             </div>
             <div>
               <div className="flex items-start text-foottext text-16">
-                <Icon
-                  icon="weui:location-outlined"
-                  className="w-6 h-6 mr-3 mt-1 shrink-0"
-                />
+                <span className="inline-flex h-6 w-6 mr-3 mt-1 shrink-0 rounded-full bg-primary/20 text-primary items-center justify-center text-12 font-semibold">
+                  L
+                </span>
                 <p>
                   Address: 804, Supremus ll, Near ward No. 11 office vasna road,
                   diwalipura, vadodara-390007.
@@ -35,14 +33,11 @@ const Footer = () => {
                 >
                   Services
                 </Link>
+                <Link href="/about" className="text-foottext hover:text-primary">
+                  About
+                </Link>
                 <Link href="/contact" className="text-foottext hover:text-primary">
                   Contact
-                </Link>
-                <Link
-                  href="/documentation#version"
-                  className="text-foottext hover:text-primary"
-                >
-                  Docs
                 </Link>
               </div>
             </div>
@@ -50,7 +45,7 @@ const Footer = () => {
         </div>
         <div className="flex items-center justify-between py-8 mt-2">
           <p className="text-15 text-foottext">
-            © 2026 Cubicso. All rights reserved.
+            (c) 2026 Cubicso. All rights reserved.
           </p>
         </div>
       </div>

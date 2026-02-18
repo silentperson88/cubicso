@@ -1,3 +1,4 @@
+"use client";
 import { Icon } from "@iconify/react/dist/iconify.js";
 import Image from "next/image";
 import tline from "/public/images/svgs/T-Line.svg";

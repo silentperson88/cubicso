@@ -1,3 +1,4 @@
+"use client";
 import React from "react";
 import BlogCard from "./BlogCard";
 import { getAllPosts } from "@/utils/markdown";

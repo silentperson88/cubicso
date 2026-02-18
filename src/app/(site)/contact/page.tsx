@@ -1,7 +1,6 @@
 import HeroSub from "@/components/SharedComponents/HeroSub";
 import { Metadata } from "next";
 import Image from "next/image";
-import { Icon } from "@iconify/react";
 
 export const metadata: Metadata = {
   title: "Contact | Cubicso",
@@ -18,17 +17,17 @@ const page = () => {
       title: "Office",
       value:
         "804, Supremus ll, Near ward No. 11 office vasna road, diwalipura, vadodara-390007.",
-      icon: "weui:location-outlined",
+      icon: "L",
     },
     {
       title: "Email",
       value: "info@cubicso.com",
-      icon: "clarity:email-line",
+      icon: "E",
     },
     {
       title: "Phone",
       value: "+91 00000 00000",
-      icon: "majesticons:phone-retro-line",
+      icon: "P",
     },
   ];
 
@@ -52,7 +51,9 @@ const page = () => {
               >
                 <div className="flex items-center gap-3 mb-4">
                   <div className="h-10 w-10 rounded-xl bg-[#eef7ff] flex items-center justify-center transition-colors duration-300 group-hover:bg-primary/15">
-                    <Icon icon={card.icon} className="text-primary w-6 h-6" />
+                    <span className="text-primary font-semibold text-16">
+                      {card.icon}
+                    </span>
                   </div>
                   <h3 className="text-22 font-semibold text-midnight_text">
                     {card.title}
