@@ -17,7 +17,7 @@ const BlogSmall: React.FC = () => {
 
   return (
     <section className="dark:bg-darkmode overflow-x-hidden">
-      <div className="container mx-auto lg:max-w-(--breakpoint-xl) md:max-w-(--breakpoint-md) px-4">
+      <div className="mx-auto w-full max-w-[1860px] px-3 md:px-5">
         <div className="flex sm:flex-row flex-col justify-between sm:items-end sm:gap-0 gap-4 mb-16">
           <div className="">
             <p className="text-16 text-primary uppercase tracking-widest font-bold">

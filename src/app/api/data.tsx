@@ -21,28 +21,32 @@ export const Heroimage = [
 // payment
 export const PaymentImage = [
   {
-    image: "/images/payment/user.svg",
+    image: "/images/pillars/Gemini_Generated_Image_g8tfmng8tfmng8tf.png",
     title: "Heavy Engineering",
+    badge: "Civil + Industrial",
     details:
-      "Execution frameworks for plant modernization, process safety, and industrial scale-up.",
+      "Bridge construction, piling, earthwork, RCC structures, EPC/BOP scope, structural steel erection, piping, and equipment installation with strong planning and schedule control.",
   },
   {
-    image: "/images/payment/user.svg",
-    title: "Robotics",
-    details:
-      "Automation strategy for autonomous systems, smart manufacturing, and AI-driven operations.",
-  },
-  {
-    image: "/images/payment/user.svg",
-    title: "Wealth Management",
-    details:
-      "Decision intelligence for portfolio growth, advisory operations, and client lifecycle management.",
-  },
-  {
-    image: "/images/payment/user.svg",
+    image: "/images/pillars/renewable_energy.png",
     title: "Renewable Energy",
+    badge: "Solar Execution",
     details:
-      "Sustainable transition models for generation planning, grid resilience, and decarbonization goals.",
+      "Utility-scale solar delivery with feasibility, grading, piling, foundation, installation, and approvals.",
+  },
+  {
+    image: "/images/pillars/wealth_management.png",
+    title: "Wealth Management",
+    badge: "Advisory",
+    details:
+      "Client-first wealth strategies with disciplined advisory support, portfolio structuring, and long-term value planning.",
+  },
+  {
+    image: "/images/pillars/robotics.png",
+    title: "Robotics",
+    badge: "Robotics + Packaging",
+    details:
+      "Turnkey automation across robotic handling, packaging lines, warehouse systems (AMR/ASRS), and IoT-enabled process monitoring.",
   },
 ];
 
@@ -51,23 +55,30 @@ export const BeneifitImage = [
   {
     image: "/images/benefit/pic.svg",
     alt: "Trusted brand",
+    title: "Skilled Delivery Team",
     details:
-      "Domain-specific strategy aligned to operational and market realities.",
+      "100+ qualified engineers with project delivery presence across 14 states in India.",
   },
   {
     image: "/images/benefit/contact.svg",
     alt: "Trusted brand",
-    details: "Integrated roadmap from pilots to enterprise-wide execution.",
+    title: "3S Vision Framework",
+    details:
+      "3S vision: Service for Excellence, Satisfaction for Vendors, and Surety for Stakeholders.",
   },
   {
     image: "/images/benefit/bank.svg",
     alt: "Trusted brand",
-    details: "Outcome tracking with measurable performance indicators.",
+    title: "Policy-Driven Quality",
+    details:
+      "Policy-driven quality and HSE practices with continuous improvement and compliance focus.",
   },
   {
     image: "/images/benefit/files.svg",
     alt: "Trusted brand",
-    details: "Cross-functional collaboration across technology and business teams.",
+    title: "Project Recovery Capability",
+    details:
+      "Proven ability to recover in-trouble projects through audits, risk controls, and disciplined execution.",
   },
 ];
 
@@ -129,13 +140,13 @@ export const footerLinks: { link: string }[] = [
 // Perks
 export const perks = [
   {
-    text: "Heavy engineering programs need robust delivery governance and risk controls.",
+    text: "Committed to completing jobs on time with utmost safety and quality.",
   },
   {
-    text: "Robotics initiatives scale faster with modular architecture and reusable platforms.",
+    text: "Long-term client relationships built through transparent collaboration and reliable outcomes.",
   },
   {
-    text: "Wealth and energy organizations benefit from data-driven forecasting and compliance-ready operations.",
+    text: "Strong field capability with machinery, manpower, and project controls for complex programs.",
   },
 ];
 

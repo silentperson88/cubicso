@@ -10,8 +10,8 @@
   --spacing-75\%: 75%;
   --spacing-50\%: 50%;
 
-  --container-screen-xl: 73.13rem;
-  --container-screen-2xl: 83.75rem;
+  --container-screen-xl: 82rem;
+  --container-screen-2xl: 94rem;
 
   --height-47: 304px;
   --height-49: 350px;
@@ -157,4 +157,26 @@
 
 .blog-details hr {
     @apply border-border dark:border-dark_border
+}
+
+@keyframes fadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(24px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeScale {
+  from {
+    opacity: 0;
+    transform: translateY(18px) scale(0.98);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
 }

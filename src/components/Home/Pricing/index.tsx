@@ -47,7 +47,7 @@ const Pricing = () => {
     <section className="overflow-hidden py-14">
       <div
         ref={ref}
-        className="container mx-auto lg:max-w-(--breakpoint-xl) md:max-w-(--breakpoint-md) px-4"
+        className="mx-auto w-full max-w-[1860px] px-3 md:px-5"
       >
         <motion.div
           initial={{ y: 40, opacity: 0 }}

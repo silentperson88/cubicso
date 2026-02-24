@@ -1,13 +1,20 @@
 import React from "react";
 import { Metadata } from "next";
-import Hero from "@/components/Home/Hero";
-import Payment from "@/components/Home/Payment";
-import Benefit  from "@/components/Home/Benefit";
-import Spend from "@/components/Home/Spend";
-import Method from "@/components/Home/Method";
-import Mobile from "@/components/Home/Mobile";
-import Search from "@/components/Home/Search";
-import Solution from "@/components/Home/Solution";
+import PreHeroVideo from "@/components/Home/PreHeroVideo";
+import SectorHero from "@/components/Home/SectorHero";
+import CoreServicesCards from "@/components/Home/CoreServicesCards";
+import CompanySnapshot from "@/components/Home/CompanySnapshot";
+import WhyChooseCubicso from "@/components/Home/WhyChooseCubicso";
+import PerformanceOutcomes from "@/components/Home/PerformanceOutcomes";
+import ClientTestimonials from "@/components/Home/ClientTestimonials";
+import OurMotto from "@/components/Home/OurMotto";
+import ProjectHighlights from "@/components/Home/ProjectHighlights";
+import FAQSection from "@/components/Home/FAQSection";
+import LatestInsightsNews from "@/components/Home/LatestInsightsNews";
+import DeliveryStrengths from "@/components/Home/DeliveryStrengths";
+import ExecutionModel from "@/components/Home/ExecutionModel";
+import StrategySession from "@/components/Home/StrategySession";
+import FinalCtaBanner from "@/components/Home/FinalCtaBanner";
 
 export const metadata: Metadata = {
   title: "Cubicso",
@@ -16,14 +23,21 @@ export const metadata: Metadata = {
 export default function Home() {
   return (
     <main>
-      <Hero />
-      <Payment />
-      <Benefit />
-      <Spend />
-      <Method />
-      <Mobile />
-      <Search />
-      <Solution />
+      <PreHeroVideo />
+      <SectorHero />
+      <CoreServicesCards />
+      <WhyChooseCubicso />
+      <PerformanceOutcomes />
+      <CompanySnapshot />
+      <OurMotto />
+      <DeliveryStrengths />
+      <ProjectHighlights />
+      <ClientTestimonials />
+      <LatestInsightsNews />
+      <FAQSection />
+      <ExecutionModel />
+      <StrategySession />
+      <FinalCtaBanner />
       
     </main>
   );
