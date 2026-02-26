@@ -104,28 +104,28 @@ const page = () => {
             <div className="grid gap-6">
               <div className="space-y-6">
                 <div className="grid gap-5 md:grid-cols-2 xl:grid-cols-3">
-            {contactCards.map((card) => (
-                  <div
-                    key={card.title}
-                    className="group rounded-2xl border border-primary/15 bg-white p-5 shadow-[0_12px_28px_rgba(47,115,242,0.10)] transition-all duration-300 hover:-translate-y-1 hover:border-primary/40 hover:shadow-[0_16px_34px_rgba(47,115,242,0.17)]"
-                  >
-                    <div className="mb-4 flex items-center gap-3">
-                      <div className="flex h-11 w-11 items-center justify-center rounded-xl bg-gradient-to-br from-primary/16 to-cyan-400/16 text-14 font-semibold text-primary">
-                        {card.short}
+                  {contactCards.map((card) => (
+                    <div
+                      key={card.title}
+                      className="group rounded-2xl border border-primary/15 bg-white p-5 shadow-[0_12px_28px_rgba(47,115,242,0.10)] transition-all duration-300 hover:-translate-y-1 hover:border-primary/40 hover:shadow-[0_16px_34px_rgba(47,115,242,0.17)]"
+                    >
+                      <div className="mb-4 flex items-center gap-3">
+                        <div className="flex h-11 w-11 items-center justify-center rounded-xl bg-gradient-to-br from-primary/16 to-cyan-400/16 text-14 font-semibold text-primary">
+                          {card.short}
+                        </div>
+                        <h3 className="text-18 font-semibold text-midnight_text">
+                          {card.title}
+                        </h3>
                       </div>
-                      <h3 className="text-18 font-semibold text-midnight_text">
-                        {card.title}
-                      </h3>
+                      {card.href ? (
+                        <Link href={card.href} className="text-16 leading-7 text-muted transition-colors hover:text-primary">
+                          {card.value}
+                        </Link>
+                      ) : (
+                        <p className="text-16 leading-7 text-muted">{card.value}</p>
+                      )}
                     </div>
-                    {card.href ? (
-                      <Link href={card.href} className="text-16 leading-7 text-muted transition-colors hover:text-primary">
-                        {card.value}
-                      </Link>
-                    ) : (
-                      <p className="text-16 leading-7 text-muted">{card.value}</p>
-                    )}
-                  </div>
-                ))}
+                  ))}
                 </div>
 
                 <div className="rounded-2xl border border-primary/16 bg-gradient-to-r from-[#e5f0ff] via-[#eaf6ff] to-[#f0f9ff] p-7 shadow-[0_10px_26px_rgba(47,115,242,0.12)]">
@@ -155,9 +155,39 @@ const page = () => {
               </div>
             </div>
 
+            <div className="rounded-2xl border border-primary/16 bg-[linear-gradient(140deg,#ffffff_0%,#f7fbff_100%)] p-6 md:p-8 shadow-[0_14px_34px_rgba(47,115,242,0.12)]">
+              <p className="inline-flex rounded-full border border-primary/20 bg-primary/8 px-3 py-1 text-12 font-semibold uppercase tracking-[0.1em] text-primary">
+                Contact Forms
+              </p>
+              <h3 className="mt-3 text-30 font-semibold text-midnight_text">Choose your purpose</h3>
+              <p className="mt-2 text-16 leading-7 text-muted">
+                Use dedicated pages for project inquiries and career applications.
+              </p>
+              <div className="mt-6 grid gap-5 md:grid-cols-2">
+                <Link
+                  href="/contact/project-inquiry"
+                  className="rounded-2xl border border-primary/20 bg-white p-6 shadow-[0_10px_24px_rgba(47,115,242,0.10)] transition-all hover:-translate-y-1 hover:border-primary/40"
+                >
+                  <h4 className="text-22 font-semibold text-midnight_text">Project Inquiry</h4>
+                  <p className="mt-2 text-15 leading-7 text-muted">
+                    Share your project scope, company details, and requirements.
+                  </p>
+                </Link>
+                <Link
+                  href="/contact/career"
+                  className="rounded-2xl border border-cyan-500/22 bg-white p-6 shadow-[0_10px_24px_rgba(8,145,178,0.10)] transition-all hover:-translate-y-1 hover:border-cyan-500/45"
+                >
+                  <h4 className="text-22 font-semibold text-midnight_text">Career</h4>
+                  <p className="mt-2 text-15 leading-7 text-muted">
+                    Apply for roles by submitting your profile and position details.
+                  </p>
+                </Link>
+              </div>
+            </div>
+
             <div className="overflow-hidden rounded-2xl border border-primary/15 bg-white shadow-[0_12px_30px_rgba(47,115,242,0.10)]">
               <iframe
-                src="https://www.google.com/maps?q=Pramukh+Bazar+Complex,+Atladara+Bill+Road,+Vadodara+390012&output=embed"
+                src="https://www.google.com/maps?q=804,+CUBICSO,+SUPREMUS+II,+Nr.+Time+Circle,+Diwalipura,+Vadodara&output=embed"
                 width="100%"
                 height="560"
                 loading="lazy"

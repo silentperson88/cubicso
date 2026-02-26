@@ -1,5 +1,7 @@
 import React from "react";
 import BlogList from "@/components/Blog/BlogList";
+import ProjectsSection from "@/components/SharedComponents/ProjectsSection";
+import PolicySection from "@/components/SharedComponents/PolicySection";
 import HeroSub from "@/components/SharedComponents/HeroSub";
 import { Metadata } from "next";
 export const metadata: Metadata = {
@@ -18,6 +20,8 @@ const Page = () => {
         description=""
         breadcrumbLinks={breadcrumbLinks}  
       />
+      <PolicySection />
+      <ProjectsSection />
       <BlogList />
     </>
   );

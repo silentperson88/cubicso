@@ -1,9 +1,11 @@
 "use client";
 import { useEffect, useRef, useState } from "react";
+import Link from "next/link";
 import { headerData } from "../Header/Navigation/menuData";
 import Logo from "./Logo";
 import HeaderLink from "../Header/Navigation/HeaderLink";
 import MobileHeaderLink from "../Header/Navigation/MobileHeaderLink";
+import { companyProfile } from "@/data/companyProfile";
 
 const Header: React.FC = () => {
   const [navbarOpen, setNavbarOpen] = useState(false);
@@ -53,14 +55,28 @@ const Header: React.FC = () => {
         <div className="pointer-events-none absolute inset-0 bg-[linear-gradient(120deg,rgba(70,196,255,0.20),rgba(47,115,242,0.10),rgba(255,255,255,0.60))]" />
         <div className="pointer-events-none absolute -top-10 -left-8 h-24 w-24 rounded-full bg-sky_blue/30 blur-2xl header-blob-a" />
         <div className="pointer-events-none absolute -bottom-12 right-10 h-28 w-28 rounded-full bg-primary/20 blur-2xl header-blob-b" />
-        <div className="flex justify-between lg:items-center xl:gap-16 lg:gap-8 px-4 py-4">
+        <div className="flex justify-between lg:items-center xl:gap-10 lg:gap-6 px-4 py-3.5">
           <Logo />
-          <nav className="hidden lg:flex grow items-center xl:justify-start justify-center gap-2 text-17 text-midnight_text relative z-10">
+          <nav className="hidden lg:flex grow items-center justify-center gap-1 text-17 text-midnight_text relative z-10">
             {headerData.map((item, index) => (
               <HeaderLink key={index} item={item} />
             ))}
           </nav>
-          <div className="flex items-center gap-4 relative z-10">
+          <div className="flex items-center gap-3 relative z-10">
+            <div className="hidden xl:flex items-center gap-2">
+              <a
+                href={`tel:${companyProfile.contact.phone}`}
+                className="inline-flex items-center rounded-full border border-primary/18 bg-white/70 px-4 py-2 text-14 font-semibold text-midnight_text transition-colors hover:border-primary/35 hover:text-primary"
+              >
+                {companyProfile.contact.phone}
+              </a>
+              <Link
+                href="/contact/project-inquiry"
+                className="inline-flex items-center rounded-full border border-primary/24 bg-[linear-gradient(110deg,rgba(47,115,242,0.95)_0%,rgba(70,196,255,0.92)_100%)] px-4 py-2 text-14 font-semibold text-white transition-all hover:-translate-y-0.5 hover:shadow-[0_12px_24px_rgba(47,115,242,0.32)]"
+              >
+                Project Inquiry
+              </Link>
+            </div>
             <button
               onClick={() => setNavbarOpen(!navbarOpen)}
               className="block lg:hidden p-2 rounded-lg border border-primary/30 text-primary bg-white/80"

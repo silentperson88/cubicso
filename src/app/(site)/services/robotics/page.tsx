@@ -1,13 +1,7 @@
-import { Metadata } from "next";
-import ServiceDetailTemplate from "@/components/Services/ServiceDetailTemplate";
-import { serviceDetails } from "@/data/serviceDetails";
+import { redirect } from "next/navigation";
 
-export const metadata: Metadata = {
-  title: "Robotics | Cubicso",
+const RoboticsLegacyPage = () => {
+  redirect("/services/ai-robotics-and-automation");
 };
 
-const RoboticsPage = () => {
-  return <ServiceDetailTemplate service={serviceDetails.robotics} />;
-};
-
-export default RoboticsPage;
+export default RoboticsLegacyPage;

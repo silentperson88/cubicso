@@ -5,7 +5,7 @@ import Link from "next/link";
 import { serviceDetails } from "@/data/serviceDetails";
 
 export const metadata: Metadata = {
-  title: "Robotics Service | Cubicso",
+  title: "AI Robotics and Automation | Cubicso",
 };
 
 const RoboticsServicePage = () => {
@@ -13,7 +13,7 @@ const RoboticsServicePage = () => {
 
   const breadcrumbLinks = [
     { href: "/", text: "Home" },
-    { href: "/robotics-service", text: "Robotics Service" },
+    { href: "/services/ai-robotics-and-automation", text: "AI Robotics and Automation" },
   ];
 
   const coreSolutions = [
@@ -122,7 +122,7 @@ const RoboticsServicePage = () => {
   return (
     <>
       <HeroSub
-        title="Robotics Service"
+        title="AI Robotics and Automation"
         description="Smart automation for smarter manufacturing with turnkey robotics, packaging, warehouse, and process systems."
         breadcrumbLinks={breadcrumbLinks}
       />
@@ -208,7 +208,7 @@ const RoboticsServicePage = () => {
               <div className="absolute -inset-4 rounded-3xl bg-gradient-to-r from-primary/20 to-cyan-300/20 blur-xl"></div>
               <Image
                 src={robotics.heroImage}
-                alt="Robotics service"
+                alt="AI Robotics and Automation service"
                 width={960}
                 height={620}
                 className="relative h-[380px] w-full rounded-3xl border border-primary/18 object-cover"
@@ -216,35 +216,53 @@ const RoboticsServicePage = () => {
             </div>
           </div>
 
-          <div className="rounded-3xl border border-slate-400/70 bg-[linear-gradient(132deg,#eff4f9_0%,#d6dee8_100%)] p-6 md:p-8 shadow-[0_14px_30px_rgba(15,23,42,0.16)]">
-            <h3 className="text-30 font-semibold text-midnight_text">Mission and Vision</h3>
+          <div className="rounded-3xl border border-violet-400/30 bg-[linear-gradient(132deg,#fff8f2_0%,#f5ecff_52%,#ecf4ff_100%)] p-6 md:p-8 shadow-[0_18px_36px_rgba(91,33,182,0.14)]">
+            <p className="inline-flex rounded-full border border-violet-500/25 bg-violet-500/10 px-3 py-1 text-12 font-semibold uppercase tracking-[0.09em] text-violet-700">
+              Strategic Direction
+            </p>
+            <h3 className="mt-3 text-34 font-semibold leading-tight text-midnight_text">Mission and Vision</h3>
+            <p className="mt-2 max-w-3xl text-16 leading-7 text-slate-700">
+              Our long-term direction combines advanced automation thinking with execution rigor on plant floors.
+            </p>
             <div className="mt-4 grid gap-5 md:grid-cols-2">
-              <div className="rounded-2xl border border-slate-400/45 bg-[linear-gradient(128deg,#f7fafc_0%,#dde6f0_100%)] p-5">
-                <p className="text-13 font-semibold uppercase tracking-[0.08em] text-primary">Our Mission</p>
-                <p className="mt-2 text-muted leading-7">
+              <div className="rounded-2xl border border-violet-400/25 bg-white/95 p-6 shadow-[0_12px_24px_rgba(91,33,182,0.10)] transition-all duration-300 hover:-translate-y-1">
+                <p className="inline-flex rounded-full border border-violet-400/25 bg-violet-100 px-3 py-1 text-12 font-semibold uppercase tracking-[0.08em] text-violet-700">Our Mission</p>
+                <p className="mt-3 text-16 text-slate-700 leading-7">
                   To transform manufacturing through intelligent automation and robotics.
                 </p>
               </div>
-              <div className="rounded-2xl border border-cyan-500/28 bg-[linear-gradient(128deg,#f8fcff_0%,#deebf4_100%)] p-5">
-                <p className="text-13 font-semibold uppercase tracking-[0.08em] text-indigo-700">Our Vision</p>
-                <p className="mt-2 text-muted leading-7">
+              <div className="rounded-2xl border border-sky-400/30 bg-[linear-gradient(130deg,#f8fdff_0%,#e8f4ff_100%)] p-6 shadow-[0_12px_24px_rgba(3,105,161,0.10)] transition-all duration-300 hover:-translate-y-1">
+                <p className="inline-flex rounded-full border border-sky-400/25 bg-sky-100 px-3 py-1 text-12 font-semibold uppercase tracking-[0.08em] text-sky-700">Our Vision</p>
+                <p className="mt-3 text-16 text-slate-700 leading-7">
                   To become a global leader in industrial automation solutions.
                 </p>
               </div>
             </div>
           </div>
 
-          <div className="rounded-3xl border border-cyan-500/30 bg-[linear-gradient(132deg,#eff7fc_0%,#d5e3ee_58%,#e6edf4_100%)] p-6 md:p-8 shadow-[0_14px_34px_rgba(8,145,178,0.16)]">
-            <h3 className="text-30 font-semibold text-midnight_text">Our Core Solutions</h3>
+          <div className="rounded-3xl border border-emerald-400/30 bg-[linear-gradient(132deg,#f2fff8_0%,#dcf7ea_58%,#e8f5ff_100%)] p-6 md:p-8 shadow-[0_18px_36px_rgba(5,150,105,0.14)]">
+            <p className="inline-flex rounded-full border border-emerald-500/25 bg-emerald-500/10 px-3 py-1 text-12 font-semibold uppercase tracking-[0.09em] text-emerald-700">
+              Solution Portfolio
+            </p>
+            <h3 className="mt-3 text-34 font-semibold leading-tight text-midnight_text">Our Core Solutions</h3>
+            <p className="mt-2 max-w-3xl text-16 leading-7 text-slate-700">
+              Integrated systems from packaging to warehouse automation, engineered for reliability, throughput, and scalability.
+            </p>
             <div className="mt-5 grid gap-5 md:grid-cols-2">
-              {coreSolutions.map((item) => (
-                <div key={item.title} className="rounded-2xl border border-slate-400/45 bg-[linear-gradient(128deg,#fbfdff_0%,#e4ecf4_100%)] p-5">
-                  <p className="text-21 font-semibold text-midnight_text">{item.title}</p>
-                  <ul className="mt-3 space-y-2">
+              {coreSolutions.map((item, index) => (
+                <div
+                  key={item.title}
+                  className="rounded-2xl border border-emerald-500/20 bg-white/95 p-6 shadow-[0_10px_24px_rgba(5,150,105,0.10)] transition-all duration-300 hover:-translate-y-1"
+                >
+                  <p className="inline-flex rounded-full border border-emerald-500/20 bg-emerald-100 px-2.5 py-1 text-11 font-semibold uppercase tracking-[0.08em] text-emerald-700">
+                    Module {String(index + 1).padStart(2, "0")}
+                  </p>
+                  <p className="mt-3 text-22 font-semibold text-midnight_text">{item.title}</p>
+                  <ul className="mt-4 space-y-2.5">
                     {item.points.map((point) => (
-                      <li key={point} className="flex items-start gap-2 text-muted">
-                        <span className="mt-2 h-2 w-2 rounded-full bg-cyan-600"></span>
-                        <span>{point}</span>
+                      <li key={point} className="flex items-start gap-2.5 text-slate-700">
+                        <span className="mt-[6px] inline-flex h-4 w-4 items-center justify-center rounded-full border border-emerald-500/30 bg-emerald-100 text-[10px] text-emerald-700">+</span>
+                        <span className="leading-7">{point}</span>
                       </li>
                     ))}
                   </ul>
@@ -253,95 +271,122 @@ const RoboticsServicePage = () => {
             </div>
           </div>
 
-          <div id="products" className="rounded-3xl border border-slate-400/65 bg-[linear-gradient(132deg,#edf2f7_0%,#d4dde8_58%,#e6edf5_100%)] p-6 md:p-8 shadow-[0_14px_34px_rgba(30,41,59,0.18)]">
-            <h3 className="text-30 font-semibold text-midnight_text">Products and Systems</h3>
+          <div id="products" className="rounded-3xl border border-amber-400/35 bg-[linear-gradient(132deg,#fff8ed_0%,#f9ecd7_58%,#f3f1ff_100%)] p-6 md:p-8 shadow-[0_18px_36px_rgba(180,83,9,0.14)]">
+            <p className="inline-flex rounded-full border border-amber-500/25 bg-amber-500/10 px-3 py-1 text-12 font-semibold uppercase tracking-[0.09em] text-amber-700">
+              Product Stack
+            </p>
+            <h3 className="mt-3 text-34 font-semibold leading-tight text-midnight_text">Products and Systems</h3>
+            <p className="mt-2 max-w-3xl text-16 leading-7 text-slate-700">
+              Modular building blocks designed to fit new lines, retrofits, and high-throughput production environments.
+            </p>
             <div className="mt-5 grid gap-5 md:grid-cols-2">
-              <div className="rounded-2xl border border-slate-400/45 bg-[linear-gradient(128deg,#f7fafc_0%,#dfe8f1_100%)] p-5">
+              <div className="rounded-2xl border border-amber-400/30 bg-white/95 p-6 shadow-[0_10px_24px_rgba(180,83,9,0.10)] transition-all duration-300 hover:-translate-y-1">
                 <p className="text-19 font-semibold text-midnight_text">Packaging Systems</p>
-                <div className="mt-3 flex flex-wrap gap-2">
+                <div className="mt-4 flex flex-wrap gap-2.5">
                   {packagingSystems.map((item) => (
-                    <span key={item} className="rounded-full border border-slate-400/45 bg-slate-100/80 px-3 py-1 text-13 text-midnight_text">{item}</span>
+                    <span key={item} className="rounded-full border border-amber-400/30 bg-amber-50 px-3.5 py-1.5 text-13 font-semibold text-amber-900">{item}</span>
                   ))}
                 </div>
               </div>
-              <div className="rounded-2xl border border-slate-400/45 bg-[linear-gradient(128deg,#f7fafc_0%,#dfe8f1_100%)] p-5">
+              <div className="rounded-2xl border border-indigo-300/35 bg-white/95 p-6 shadow-[0_10px_24px_rgba(79,70,229,0.10)] transition-all duration-300 hover:-translate-y-1">
                 <p className="text-19 font-semibold text-midnight_text">Robotic Systems</p>
-                <div className="mt-3 flex flex-wrap gap-2">
+                <div className="mt-4 flex flex-wrap gap-2.5">
                   {roboticSystems.map((item) => (
-                    <span key={item} className="rounded-full border border-slate-400/45 bg-slate-100/80 px-3 py-1 text-13 text-midnight_text">{item}</span>
+                    <span key={item} className="rounded-full border border-indigo-300/35 bg-indigo-50 px-3.5 py-1.5 text-13 font-semibold text-indigo-900">{item}</span>
                   ))}
                 </div>
               </div>
-              <div className="rounded-2xl border border-slate-400/45 bg-[linear-gradient(128deg,#f7fafc_0%,#dfe8f1_100%)] p-5">
+              <div className="rounded-2xl border border-teal-300/35 bg-white/95 p-6 shadow-[0_10px_24px_rgba(13,148,136,0.10)] transition-all duration-300 hover:-translate-y-1">
                 <p className="text-19 font-semibold text-midnight_text">Warehouse Automation</p>
-                <div className="mt-3 flex flex-wrap gap-2">
+                <div className="mt-4 flex flex-wrap gap-2.5">
                   {warehouseSystems.map((item) => (
-                    <span key={item} className="rounded-full border border-slate-400/45 bg-slate-100/80 px-3 py-1 text-13 text-midnight_text">{item}</span>
+                    <span key={item} className="rounded-full border border-teal-300/35 bg-teal-50 px-3.5 py-1.5 text-13 font-semibold text-teal-900">{item}</span>
                   ))}
                 </div>
               </div>
-              <div className="rounded-2xl border border-slate-400/45 bg-[linear-gradient(128deg,#f7fafc_0%,#dfe8f1_100%)] p-5">
+              <div className="rounded-2xl border border-rose-300/35 bg-white/95 p-6 shadow-[0_10px_24px_rgba(225,29,72,0.10)] transition-all duration-300 hover:-translate-y-1">
                 <p className="text-19 font-semibold text-midnight_text">Filling and Process Systems</p>
-                <div className="mt-3 flex flex-wrap gap-2">
+                <div className="mt-4 flex flex-wrap gap-2.5">
                   {fillingSystems.map((item) => (
-                    <span key={item} className="rounded-full border border-slate-400/45 bg-slate-100/80 px-3 py-1 text-13 text-midnight_text">{item}</span>
+                    <span key={item} className="rounded-full border border-rose-300/35 bg-rose-50 px-3.5 py-1.5 text-13 font-semibold text-rose-900">{item}</span>
                   ))}
                 </div>
               </div>
             </div>
           </div>
 
-          <div className="rounded-3xl border border-slate-400/70 bg-[linear-gradient(130deg,#ecf1f6_0%,#d5dee9_100%)] p-6 md:p-8 shadow-[0_14px_32px_rgba(30,41,59,0.16)]">
-            <h3 className="text-30 font-semibold text-midnight_text">Industries We Serve</h3>
-            <div className="mt-5 flex flex-wrap gap-3">
-              {industries.map((item) => (
-                <span key={item} className="rounded-full border border-slate-500/40 bg-slate-50/85 px-4 py-2 text-14 font-medium text-midnight_text">
+          <div className="rounded-3xl border border-orange-300/40 bg-[linear-gradient(130deg,#fff8f0_0%,#ffeeda_48%,#fff4ea_100%)] p-6 md:p-8 shadow-[0_18px_34px_rgba(194,65,12,0.13)]">
+            <p className="inline-flex rounded-full border border-orange-400/25 bg-orange-100 px-3 py-1 text-12 font-semibold uppercase tracking-[0.09em] text-orange-700">
+              Sector Coverage
+            </p>
+            <h3 className="mt-3 text-34 font-semibold leading-tight text-midnight_text">Industries We Serve</h3>
+            <p className="mt-2 max-w-3xl text-16 leading-7 text-slate-700">
+              Cross-industry implementations with domain-aware automation patterns.
+            </p>
+            <div className="mt-5 grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
+              {industries.map((item, index) => (
+                <span key={item} className="flex items-center gap-2 rounded-xl border border-orange-300/35 bg-white/95 px-4 py-3 text-14 font-semibold text-slate-800 shadow-[0_6px_16px_rgba(194,65,12,0.08)]">
+                  <span className="inline-flex h-5 w-5 items-center justify-center rounded-full bg-orange-100 text-[11px] font-bold text-orange-700">
+                    {index + 1}
+                  </span>
                   {item}
                 </span>
               ))}
             </div>
           </div>
 
-          <div className="rounded-3xl border border-cyan-500/28 bg-[linear-gradient(130deg,#ecf4fa_0%,#d6e3ee_100%)] p-6 md:p-8 shadow-[0_14px_32px_rgba(8,145,178,0.16)]">
-            <h3 className="text-30 font-semibold text-midnight_text">Technology</h3>
-            <p className="mt-2 text-muted">Industry 4.0 ready solutions with robotics integration and smart analytics.</p>
+          <div className="rounded-3xl border border-cyan-300/35 bg-[linear-gradient(130deg,#0b1933_0%,#10274f_52%,#153860_100%)] p-6 md:p-8 shadow-[0_20px_36px_rgba(2,6,23,0.38)]">
+            <p className="inline-flex rounded-full border border-cyan-300/40 bg-cyan-300/10 px-3 py-1 text-12 font-semibold uppercase tracking-[0.09em] text-cyan-100">
+              Technology Stack
+            </p>
+            <h3 className="mt-3 text-34 font-semibold leading-tight text-white">Technology</h3>
+            <p className="mt-2 text-16 leading-7 text-slate-200">Industry 4.0 ready solutions with robotics integration and smart analytics.</p>
             <div className="mt-5 grid gap-4 md:grid-cols-2 lg:grid-cols-3">
-              {technologyStack.map((item) => (
-                <div key={item} className="rounded-xl border border-slate-400/45 bg-slate-50/90 px-4 py-3 text-muted">
-                  {item}
+              {technologyStack.map((item, index) => (
+                <div key={item} className="rounded-xl border border-cyan-300/25 bg-white/10 px-4 py-3.5 text-cyan-50 shadow-[0_8px_18px_rgba(8,145,178,0.15)] backdrop-blur-sm">
+                  <p className="text-11 font-semibold uppercase tracking-[0.09em] text-cyan-200">
+                    Tech {String(index + 1).padStart(2, "0")}
+                  </p>
+                  <p className="mt-1 text-15 leading-7 text-white">{item}</p>
                 </div>
               ))}
             </div>
           </div>
 
-          <div className="rounded-3xl border border-slate-400/65 bg-[linear-gradient(130deg,#edf2f7_0%,#d4dde8_100%)] p-6 md:p-8 shadow-[0_14px_32px_rgba(30,41,59,0.17)]">
-            <h3 className="text-30 font-semibold text-midnight_text">Why Choose Us</h3>
+          <div className="rounded-3xl border border-fuchsia-300/35 bg-[linear-gradient(130deg,#fff6fd_0%,#f5ecff_52%,#f1edff_100%)] p-6 md:p-8 shadow-[0_18px_34px_rgba(147,51,234,0.12)]">
+            <p className="inline-flex rounded-full border border-fuchsia-400/25 bg-fuchsia-100 px-3 py-1 text-12 font-semibold uppercase tracking-[0.09em] text-fuchsia-700">
+              Delivery Advantage
+            </p>
+            <h3 className="mt-3 text-34 font-semibold leading-tight text-midnight_text">Why Choose Us</h3>
             <div className="mt-5 grid gap-4 md:grid-cols-2 lg:grid-cols-3">
               {whyChooseUs.map((item, index) => (
-                <div key={item} className="rounded-2xl border border-slate-400/45 bg-slate-50/90 p-5">
-                  <p className="text-12 font-semibold uppercase tracking-[0.08em] text-indigo-700">
+                <div key={item} className="rounded-2xl border border-fuchsia-300/30 bg-white/95 p-5 shadow-[0_8px_20px_rgba(147,51,234,0.10)] transition-all duration-300 hover:-translate-y-1">
+                  <p className="text-12 font-semibold uppercase tracking-[0.08em] text-fuchsia-700">
                     Value {String(index + 1).padStart(2, "0")}
                   </p>
-                  <p className="mt-2 text-16 leading-7 text-midnight_text">{item}</p>
+                  <p className="mt-2 text-16 leading-7 font-medium text-slate-800">{item}</p>
                 </div>
               ))}
             </div>
           </div>
 
           <div className="grid gap-6 lg:grid-cols-2">
-            <div className="rounded-2xl border border-slate-400/70 bg-[linear-gradient(128deg,#edf2f7_0%,#d9e2eb_100%)] p-6 shadow-[0_10px_24px_rgba(15,23,42,0.14)]">
-              <h3 className="text-24 font-semibold text-midnight_text">Our Strengths</h3>
-              <div className="mt-4 space-y-2.5">
+            <div className="rounded-2xl border border-emerald-300/40 bg-[linear-gradient(128deg,#f2fff8_0%,#def7eb_100%)] p-6 shadow-[0_12px_26px_rgba(5,150,105,0.12)]">
+              <h3 className="text-28 font-semibold text-midnight_text">Our Strengths</h3>
+              <div className="mt-4 space-y-3">
                 {strengths.map((item) => (
-                  <p key={item} className="text-muted leading-7">{item}</p>
+                  <p key={item} className="flex items-start gap-2.5 text-slate-700 leading-7">
+                    <span className="mt-[6px] inline-flex h-4 w-4 items-center justify-center rounded-full border border-emerald-500/30 bg-emerald-100 text-[10px] text-emerald-700">+</span>
+                    <span>{item}</span>
+                  </p>
                 ))}
               </div>
             </div>
-            <div className="rounded-2xl border border-cyan-500/28 bg-[linear-gradient(128deg,#edf5fb_0%,#d7e5f0_100%)] p-6 shadow-[0_10px_24px_rgba(8,145,178,0.14)]">
-              <h3 className="text-24 font-semibold text-midnight_text">Package (Packaging Systems)</h3>
+            <div className="rounded-2xl border border-sky-300/40 bg-[linear-gradient(128deg,#eef8ff_0%,#dbeeff_100%)] p-6 shadow-[0_12px_26px_rgba(2,132,199,0.14)]">
+              <h3 className="text-28 font-semibold text-midnight_text">Package (Packaging Systems)</h3>
               <div className="mt-4 flex flex-wrap gap-2.5">
                 {packagingSystems.map((item) => (
-                  <span key={item} className="rounded-full border border-slate-400/45 bg-slate-50/90 px-3 py-1.5 text-13 text-midnight_text">
+                  <span key={item} className="rounded-full border border-sky-300/35 bg-white px-3.5 py-1.5 text-13 font-semibold text-sky-900 shadow-[0_6px_14px_rgba(2,132,199,0.10)]">
                     {item}
                   </span>
                 ))}
@@ -349,19 +394,23 @@ const RoboticsServicePage = () => {
             </div>
           </div>
 
-          <div className="rounded-3xl border border-indigo-300/35 bg-[linear-gradient(132deg,#f7f9ff_0%,#eaeeff_58%,#edf2fa_100%)] p-6 md:p-8 shadow-[0_14px_34px_rgba(79,70,229,0.14)]">
-            <h3 className="text-30 font-semibold text-midnight_text">Projects and Case Studies</h3>
-            <p className="mt-2 text-muted">Every case study should capture the following structure for measurable impact reporting.</p>
+          <div className="rounded-3xl border border-rose-300/35 bg-[linear-gradient(132deg,#fff5f6_0%,#fdecec_50%,#f1f1ff_100%)] p-6 md:p-8 shadow-[0_18px_36px_rgba(190,24,93,0.12)]">
+            <p className="inline-flex rounded-full border border-rose-400/25 bg-rose-100 px-3 py-1 text-12 font-semibold uppercase tracking-[0.09em] text-rose-700">
+              Case Study Framework
+            </p>
+            <h3 className="mt-3 text-34 font-semibold leading-tight text-midnight_text">Projects and Case Studies</h3>
+            <p className="mt-2 text-16 leading-7 text-slate-700">Every case study should capture the following structure for measurable impact reporting.</p>
             <div className="mt-4 grid gap-3 md:grid-cols-2 lg:grid-cols-3">
-              {projectTemplate.map((item) => (
-                <div key={item} className="rounded-xl border border-indigo-300/35 bg-white px-4 py-3 text-midnight_text">
-                  {item}
+              {projectTemplate.map((item, index) => (
+                <div key={item} className="rounded-xl border border-rose-300/30 bg-white/95 px-4 py-3 text-midnight_text shadow-[0_8px_18px_rgba(190,24,93,0.08)]">
+                  <p className="text-11 font-semibold uppercase tracking-[0.08em] text-rose-700">Step {String(index + 1).padStart(2, "0")}</p>
+                  <p className="mt-1 font-medium text-slate-800">{item}</p>
                 </div>
               ))}
             </div>
             <div className="mt-6 grid gap-5 md:grid-cols-3">
               {robotics.projectTypes.map((project) => (
-                <div key={project.title} className="overflow-hidden rounded-2xl border border-indigo-300/30 bg-white">
+                <div key={project.title} className="overflow-hidden rounded-2xl border border-rose-300/30 bg-white shadow-[0_12px_26px_rgba(190,24,93,0.10)] transition-all duration-300 hover:-translate-y-1">
                   <Image
                     src={project.image}
                     alt={project.title}
@@ -491,7 +540,7 @@ const RoboticsServicePage = () => {
 
           <div className="rounded-3xl border border-[#1e3a8a]/35 bg-[linear-gradient(120deg,#0f172a_0%,#1e3a8a_52%,#0891b2_100%)] p-7 text-center shadow-[0_16px_34px_rgba(15,23,42,0.35)]">
             <h3 className="text-30 font-semibold text-white">
-              Plan Your Robotics Service Program
+              Plan Your AI Robotics and Automation Program
             </h3>
             <p className="mx-auto mt-3 max-w-2xl text-white/90">
               Connect with Cubicso to discuss delivery scope, execution model, and timeline feasibility.

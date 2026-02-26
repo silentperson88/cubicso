@@ -8,7 +8,6 @@ import WhyChooseCubicso from "@/components/Home/WhyChooseCubicso";
 import PerformanceOutcomes from "@/components/Home/PerformanceOutcomes";
 import ClientTestimonials from "@/components/Home/ClientTestimonials";
 import OurMotto from "@/components/Home/OurMotto";
-import ProjectHighlights from "@/components/Home/ProjectHighlights";
 import FAQSection from "@/components/Home/FAQSection";
 import LatestInsightsNews from "@/components/Home/LatestInsightsNews";
 import DeliveryStrengths from "@/components/Home/DeliveryStrengths";
@@ -31,7 +30,6 @@ export default function Home() {
       <CompanySnapshot />
       <OurMotto />
       <DeliveryStrengths />
-      <ProjectHighlights />
       <ClientTestimonials />
       <LatestInsightsNews />
       <FAQSection />

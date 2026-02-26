@@ -59,7 +59,7 @@ const ServicesPage = () => {
               </Link>
             </div>
             <div className="rounded-2xl border border-primary/15 bg-white p-6 shadow-sm">
-              <p className="text-22 font-semibold text-midnight_text">Advisory & Robotics</p>
+              <p className="text-22 font-semibold text-midnight_text">Advisory & AI Robotics and Automation</p>
               <p className="mt-2 text-muted">
                 Wealth advisory plus turnkey robotics automation across packaging, warehouse, and process systems.
               </p>
@@ -71,10 +71,10 @@ const ServicesPage = () => {
                   Wealth
                 </Link>
                 <Link
-                  href="/services/robotics"
+                  href="/services/ai-robotics-and-automation"
                   className="inline-flex items-center rounded-lg border border-primary/20 bg-[#eef7ff] px-3 py-2 text-primary text-14 font-semibold hover:bg-primary hover:text-white transition-colors"
                 >
-                  Robotics
+                  AI Robotics and Automation
                 </Link>
               </div>
             </div>
