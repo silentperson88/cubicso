@@ -4,7 +4,16 @@ import Header from "@/components/Layout/Header";
 import Footer from "@/components/Layout/Footer";
 import { ThemeProvider } from "next-themes";
 import ScrollToTop from "@/components/ScrollToTop";
+import type { Metadata } from "next";
 const dmsans = DM_Sans({ subsets: ["latin"] });
+
+export const metadata: Metadata = {
+  icons: {
+    icon: ["/favicon.svg", "/favicon.png"],
+    shortcut: "/favicon.svg",
+    apple: "/images/logo-background.png",
+  },
+};
 
 export default function RootLayout({
   children,

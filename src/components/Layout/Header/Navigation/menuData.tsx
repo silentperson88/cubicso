@@ -1,7 +1,42 @@
-﻿import { HeaderItem } from "../../../../types/menu";
+import { HeaderItem } from "../../../../types/menu";
 
 export const headerData: HeaderItem[] = [
-  { label: "Home", href: "/" },
+  {
+    label: "Home",
+    href: "/",
+    submenu: [
+      {
+        label: "Who Are we",
+        href: "/home/who-are-we",
+        subtitle: "Who we are and what drives our work.",
+        image: "/images/pillars/renewable_energy.png",
+      },
+      {
+        label: "Our Approach",
+        href: "/home/our-approach",
+        subtitle: "How we translate strategy into delivery outcomes.",
+        image: "/images/pillars/robotics.png",
+      },
+      {
+        label: "INTEGRATION WITH CLIENT ORGANISATION",
+        href: "/home/integration-with-client-organisation",
+        subtitle: "How our teams align with client operating structures.",
+        image: "/images/pillars/wealth_management.png",
+      },
+      {
+        label: "QHSE POLICY",
+        href: "/home/policies",
+        subtitle: "Governance, quality, and compliance principles.",
+        image: "/images/pillars/renewable_energy.png",
+      },
+      {
+        label: "Leadership",
+        href: "/home/leadership",
+        subtitle: "Leadership principles that guide delivery and partnerships.",
+        image: "/images/pillars/Gemini_Generated_Image_g8tfmng8tfmng8tf.png",
+      },
+    ],
+  },
   {
     label: "Services",
     href: "/services",
@@ -13,8 +48,8 @@ export const headerData: HeaderItem[] = [
         image: "/images/pillars/Gemini_Generated_Image_g8tfmng8tfmng8tf.png",
       },
       {
-        label: "Robotics",
-        href: "/services/robotics",
+        label: "AI Robotics and Automation",
+        href: "/services/ai-robotics-and-automation",
         subtitle: "Turnkey robotics, packaging, and warehouse automation systems.",
         image: "/images/pillars/robotics.png",
       },
@@ -32,40 +67,24 @@ export const headerData: HeaderItem[] = [
       },
     ],
   },
+  { label: "Insights", href: "/blog" },
   {
-    label: "About Us",
-    href: "/about",
+    label: "Contact",
+    href: "/contact",
     submenu: [
       {
-        label: "Who Are we",
-        href: "/about/who-are-we",
-        subtitle: "Who we are and what drives our work.",
-        image: "/images/pillars/renewable_energy.png",
+        label: "Project Inquiry",
+        href: "/contact/project-inquiry",
+        subtitle: "Share project scope and requirements with our delivery team.",
+        image: "/images/Inquiry.png",
       },
       {
-        label: "Our Approach",
-        href: "/about/our-approach",
-        subtitle: "How we translate strategy into delivery outcomes.",
-        image: "/images/pillars/robotics.png",
-      },
-      {
-        label: "INTEGRATION WITH CLIENT ORGANISATION",
-        href: "/about/integration-with-client-organisation",
-        subtitle: "How our teams align with client operating structures.",
-        image: "/images/pillars/wealth_management.png",
-      },
-      {
-        label: "POLICIES",
-        href: "/about/policies",
-        subtitle: "Governance, quality, and compliance principles.",
-        image: "/images/pillars/renewable_energy.png",
+        label: "Career",
+        href: "/contact/career",
+        subtitle: "Apply for open roles and submit your professional profile.",
+        image: "/images/career.png",
       },
     ],
   },
-  { label: "Projects", href: "/about/projects" },
-  { label: "Leadership", href: "/about/leadership" },
-  { label: "Robotics Service", href: "/robotics-service" },
-  { label: "Insights", href: "/blog" },
-  { label: "Contact", href: "/contact" },
 ];
 

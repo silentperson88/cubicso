@@ -54,8 +54,8 @@ export const companyProfile = {
   ],
   policies: {
     quality:
-      "Quality is a way of life. Continuous improvement, resource optimization, and surpassing client expectations are treated as baseline commitments.",
-    hse: "Cubicso is committed to a clean, safe, and healthy environment for employees, contractors, customers, and communities, with compliance to applicable legislation and ongoing HSE improvements.",
+      "CUBICSO will make quality a way of life. Quality is the result of good management and will be achieved by the way we get the right things done. We believe there is always a better way to provide services to our clients and strive for continuous improvement. In rendering our services we will optimise resource utilisation and commit ourselves fully to the task at hand. We consider meeting client requirements as the minimum performance criteria and aim to surpass expectations.",
+    hse: "CUBICSO is committed to a clean, safe and healthy environment for our employees, contractors, customers and the communities around us. All employees and contractors forming part of the CUBICSO service have a duty to prevent harm to themselves, to others and to the environment. CUBICSO will comply with all applicable legislation, regulations and customers' requirements as the minimum benchmark for its Health, Safety and Environment (HSE) Policy. CUBICSO will regularly review this policy, practices and performance to ensure ongoing improvements.",
   },
   teamExperience: [
     "Flexible team model tailored to client geography, processes, systems, and resource constraints.",
@@ -64,14 +64,13 @@ export const companyProfile = {
   ],
   contact: {
     postalAddress: [
-      "II nd Floor, Office Nos- 222-228",
-      "Pramukh Bazar Complex",
-      "Atladara - Bill Road",
-      "Vadodara - 390012",
+      "804, CUBICSO, SUPREMUS II",
+      "Nr. Time Circle, Diwalipura",
+      "Vadodara",
     ],
     physicalAddress: ['Lat: -22O16,4.213"N', 'Long: 7309,1.668"E'],
-    phone: "9084923237",
-    fax: "9712996007",
+    phone: "0265-4062441",
+    fax: "0265-4062441",
     email: "bcg@cubicso.com",
   },
 } as const;
@@ -182,28 +181,28 @@ export const aboutSectionDetails: Record<string, AboutSectionDetail> = {
       "Projects are delivered with a clear focus on schedule confidence, technical quality, and safety outcomes.",
   },
   policies: {
-    title: "Policies",
+    title: "QHSE Policy",
     heroDescription:
-      "Quality and HSE policies are central to Cubicso's operational model.",
-    badge: "Policies",
+      "Quality, health, safety, and environment policies are embedded into planning, execution, and controls.",
+    badge: "QHSE Policy",
     intro:
-      "Cubicso treats quality as a way of life and maintains health, safety, and environmental responsibility as core obligations to employees, contractors, clients, and communities.",
+      "From pre-construction planning to handover, Cubicso applies policy-led execution to protect people, environment, schedule, and quality outcomes. The policy framework is actively reviewed and used as an operating baseline for project decisions.",
     image: "/images/about/Gemini_Generated_Image_uvliefuvliefuvli.png",
     keyPoints: [
-      "Continuous improvement",
-      "Regulatory and client compliance",
-      "Clean, safe, healthy work environments",
+      "Quality as a way of life",
+      "Compliance as minimum benchmark",
+      "Ongoing HSE performance review",
     ],
     focusCards: [
       {
         title: "Quality Policy",
         description:
-          "Services are continuously improved with optimized resource utilization, aiming to exceed client requirements, not merely meet them.",
+          "Policy focus is to get the right work done through strong management systems, continuous improvement, and disciplined resource utilization. Client requirements are treated as minimum performance criteria.",
       },
       {
         title: "HSE Policy",
         description:
-          "All employees and contractors are responsible for preventing harm, with policy reviews and performance checks supporting ongoing improvement.",
+          "Employees and contractors share responsibility for preventing harm to people and environment. Compliance with legal and customer requirements is enforced, with regular policy and practice reviews for ongoing improvement.",
       },
     ],
     highlight:
@@ -212,26 +211,26 @@ export const aboutSectionDetails: Record<string, AboutSectionDetail> = {
   leadership: {
     title: "Leadership",
     heroDescription:
-      "Leadership at Cubicso emphasizes values, ethics, integrity, and long-term client partnerships.",
+      "Leadership at Cubicso is rooted in values, ethics, integrity, and long-term client partnership.",
     badge: "Leadership",
     intro:
-      "Leadership focus is on safe delivery, client satisfaction, and sustainable growth while building trust through transparent execution and accountability.",
+      "As reflected in the company profile message to business partners, Cubicso leadership drives growth with safety and client satisfaction as top priorities. The leadership model emphasizes transparent execution, disciplined project ownership, and value addition through long-term associations.",
     image: "/images/about/Gemini_Generated_Image_y57p91y57p91y57p.png",
     keyPoints: [
-      "Values-led execution",
-      "Client-first orientation",
-      "Long-term partnership focus",
+      "Values, ethics, and integrity",
+      "3S vision-led leadership",
+      "Safe and timely execution culture",
     ],
     focusCards: [
       {
         title: "Delivery Stewardship",
         description:
-          "Leaders drive program discipline across safety, quality, and timelines while supporting strong field-level execution.",
+          "Leadership steers project discipline on safety, quality, and time while ensuring accountability from planning through field execution.",
       },
       {
         title: "People and Capability",
         description:
-          "A young, skilled workforce is developed and organized to deliver complex projects with confidence and speed.",
+          "A team of 100+ qualified engineers across 14 states, with a young and talented workforce profile, is developed to handle complex programs with confidence.",
       },
     ],
     highlight:

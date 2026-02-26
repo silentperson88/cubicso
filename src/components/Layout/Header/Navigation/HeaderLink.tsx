@@ -7,8 +7,11 @@ import Image from "next/image";
 
 const HeaderLink: React.FC<{ item: HeaderItem }> = ({ item }) => {
   const [submenuOpen, setSubmenuOpen] = useState(false);
+  const [submenuVisible, setSubmenuVisible] = useState(false);
   const [activeSubmenuIndex, setActiveSubmenuIndex] = useState(0);
+  const [submenuOffsetX, setSubmenuOffsetX] = useState(0);
   const closeTimerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
+  const triggerRef = useRef<HTMLDivElement | null>(null);
   const path = usePathname();
 
   const hasRichSubmenu = item.submenu?.some(
@@ -26,8 +29,32 @@ const HeaderLink: React.FC<{ item: HeaderItem }> = ({ item }) => {
   const handleMouseEnter = () => {
     clearCloseTimer();
     if (item.submenu) {
+      setSubmenuVisible(false);
+      // Keep submenu within viewport by nudging it horizontally when needed.
+      if (typeof window !== "undefined" && triggerRef.current) {
+        const triggerRect = triggerRef.current.getBoundingClientRect();
+        const viewportPadding = 12;
+        const desiredMenuWidth = hasRichSubmenu ? Math.min(window.innerWidth * 0.92, 780) : 240;
+        const viewportRightLimit = window.innerWidth - viewportPadding;
+
+        let offsetX = 0;
+        const rightEdge = triggerRect.left + desiredMenuWidth;
+        if (rightEdge > viewportRightLimit) {
+          offsetX -= rightEdge - viewportRightLimit;
+        }
+
+        const leftEdge = triggerRect.left + offsetX;
+        if (leftEdge < viewportPadding) {
+          offsetX += viewportPadding - leftEdge;
+        }
+
+        setSubmenuOffsetX(offsetX);
+      }
       setSubmenuOpen(true);
       setActiveSubmenuIndex(0);
+      if (typeof window !== "undefined") {
+        requestAnimationFrame(() => setSubmenuVisible(true));
+      }
     }
   };
 
@@ -35,11 +62,13 @@ const HeaderLink: React.FC<{ item: HeaderItem }> = ({ item }) => {
     clearCloseTimer();
     closeTimerRef.current = setTimeout(() => {
       setSubmenuOpen(false);
+      setSubmenuVisible(false);
     }, 180);
   };
 
   return (
     <div
+      ref={triggerRef}
       className="relative"
       onMouseEnter={handleMouseEnter}
       onMouseLeave={handleMouseLeave}
@@ -76,6 +105,10 @@ const HeaderLink: React.FC<{ item: HeaderItem }> = ({ item }) => {
           {hasRichSubmenu ? (
             <div
               className="absolute left-0 mt-3 w-[min(92vw,780px)] rounded-2xl border border-primary/20 bg-white/95 backdrop-blur-md shadow-[0_24px_70px_rgba(16,45,71,0.20)] p-3 animate-[submenuUp_.25s_ease-out]"
+              style={{
+                transform: `translateX(${submenuOffsetX}px)`,
+                visibility: submenuVisible ? "visible" : "hidden",
+              }}
               onMouseEnter={clearCloseTimer}
               onMouseLeave={handleMouseLeave}
             >
@@ -128,6 +161,10 @@ const HeaderLink: React.FC<{ item: HeaderItem }> = ({ item }) => {
           ) : (
             <div
               className="absolute py-2 left-0 mt-2 w-60 bg-white shadow-xl rounded-xl border border-black/5"
+              style={{
+                transform: `translateX(${submenuOffsetX}px)`,
+                visibility: submenuVisible ? "visible" : "hidden",
+              }}
               onMouseEnter={clearCloseTimer}
               onMouseLeave={handleMouseLeave}
             >

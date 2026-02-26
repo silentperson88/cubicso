@@ -1,4 +1,4 @@
-﻿import Link from "next/link";
+import Link from "next/link";
 import { companyProfile } from "@/data/companyProfile";
 import { Icon } from "@iconify/react";
 
@@ -7,27 +7,31 @@ const Footer = () => {
     { label: "Home", href: "/" },
     { label: "Services", href: "/services" },
     { label: "Projects", href: "/about/projects" },
-    { label: "Leadership", href: "/about/leadership" },
     { label: "Insights", href: "/blog" },
-    { label: "About Us", href: "/about" },
     { label: "Contact", href: "/contact" },
   ];
 
-  const aboutLinks = [
-    { label: "Who Are We", href: "/about/who-are-we" },
-    { label: "Our Approach", href: "/about/our-approach" },
+  const homeLinks = [
+    { label: "Who Are We", href: "/home/who-are-we" },
+    { label: "Our Approach", href: "/home/our-approach" },
     {
       label: "Client Integration",
-      href: "/about/integration-with-client-organisation",
+      href: "/home/integration-with-client-organisation",
     },
-    { label: "Policies", href: "/about/policies" },
+    { label: "QHSE Policy", href: "/home/policies" },
+    { label: "Leadership", href: "/home/leadership" },
   ];
 
   const serviceLinks = [
     { label: "Heavy Engineering", href: "/services/heavy-engineering" },
     { label: "Renewable Energy", href: "/services/renewable-energy" },
     { label: "Wealth Management", href: "/services/wealth-management" },
-    { label: "Robotics", href: "/services/robotics" },
+    { label: "AI Robotics and Automation", href: "/services/ai-robotics-and-automation" },
+  ];
+
+  const contactLinks = [
+    { label: "Project Inquiry", href: "/contact/project-inquiry" },
+    { label: "Career", href: "/contact/career" },
   ];
 
   return (
@@ -40,13 +44,22 @@ const Footer = () => {
         <div className="rounded-[28px] border border-white/12 bg-[linear-gradient(140deg,rgba(255,255,255,0.10)_0%,rgba(255,255,255,0.04)_100%)] px-6 py-8 md:px-10 md:py-10 backdrop-blur-sm">
           <div className="grid lg:grid-cols-12 gap-10 items-start">
             <div className="lg:col-span-5">
-              <p className="inline-flex items-center gap-2 rounded-full border border-white/25 bg-white/12 px-3.5 py-1.5 text-12 font-semibold tracking-[0.03em] text-white shadow-sm">
-                <span className="h-2 w-2 rounded-full bg-sky_blue"></span>
-                CUBICSO ENTERPRISE
-              </p>
-              <h3 className="text-34 font-semibold text-white mt-3">
-                Cubicso
-              </h3>
+              <div className="w-fit rounded-full bg-gradient-to-r from-[#ff6a1a] via-[#a21caf] to-[#2563eb] p-px">
+                <p className="flex w-fit items-center gap-2 rounded-full bg-[#1a2b3e]/80 px-3.5 py-1.5 text-12 font-semibold tracking-[0.06em] text-white/95 backdrop-blur-sm">
+                  <span className="h-2 w-2 rounded-full bg-white/90"></span>
+                  <span>CUBICSO ENTERPRISE</span>
+                </p>
+              </div>
+              <Link href="/" className="mt-3 block w-fit">
+                <span className="text-[34px] font-extrabold tracking-tight leading-none">
+                  <span className="bg-gradient-to-r from-[#ff6a1a] via-[#ef4444] to-[#a21caf] bg-clip-text text-transparent">
+                    Cubic
+                  </span>
+                  <span className="bg-gradient-to-r from-[#8b00c7] via-[#6d28d9] to-[#2563eb] bg-clip-text text-transparent">
+                    so
+                  </span>
+                </span>
+              </Link>
               <p className="text-foottext mt-3 max-w-[560px] leading-7">
                 Values-led execution partner for Heavy Engineering, Renewable
                 Energy, Wealth Management, and Robotics-focused programs across
@@ -115,10 +128,10 @@ const Footer = () => {
 
               <div>
                 <p className="inline-flex rounded-full border border-white/18 bg-white/8 px-3 py-1 text-white text-12 font-semibold tracking-[0.03em] uppercase">
-                  About Us Sections
+                  Home Sections
                 </p>
                 <div className="mt-4 grid grid-cols-1 gap-2.5">
-                  {aboutLinks.map((link) => (
+                  {homeLinks.map((link) => (
                     <Link
                       key={link.href}
                       href={link.href}
@@ -135,6 +148,18 @@ const Footer = () => {
                 <p className="inline-flex rounded-full border border-white/18 bg-white/8 px-3 py-1 text-white text-12 font-semibold tracking-[0.03em] uppercase">
                   Contact
                 </p>
+                <div className="mt-4 grid gap-2.5">
+                  {contactLinks.map((link) => (
+                    <Link
+                      key={link.href}
+                      href={link.href}
+                      className="flex items-center gap-2 text-foottext hover:text-white transition-colors"
+                    >
+                      <Icon icon="solar:alt-arrow-right-linear" width="13" height="13" />
+                      {link.label}
+                    </Link>
+                  ))}
+                </div>
                 <div className="mt-4 space-y-3">
                   <p className="text-foottext leading-7">
                     <span className="text-white/90 font-medium">Address:</span>{" "}

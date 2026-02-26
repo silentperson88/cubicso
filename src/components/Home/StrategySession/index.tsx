@@ -73,13 +73,7 @@ const Search = () => {
                 <div className="lg:col-span-2">
                   <p className="text-midnight_text text-17 leading-8">{item.text}</p>
                   <div className="flex items-center gap-4 mt-8">
-                    <Image
-                      src={item.image}
-                      alt={item.name}
-                      width={58}
-                      height={58}
-                      className="rounded-full"
-                    />
+                    
                     <div>
                       <h3 className="font-medium text-base text-midnight_text">
                         {item.name}
