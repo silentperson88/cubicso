@@ -1,19 +1,25 @@
 "use client";
-import React from "react";
+import React, { useEffect, useState } from "react";
 import BlogCard from "./BlogCard";
-import { getAllPosts } from "@/utils/markdown";
 import Link from "next/link";
 import { Icon } from "@iconify/react";
+import { Blog } from "@/types/blog";
 
 const BlogSmall: React.FC = () => {
-  const posts = getAllPosts([
-    "title",
-    "date",
-    "type",
-    "excerpt",
-    "coverImage",
-    "slug",
-  ]);
+  const [posts, setPosts] = useState<Blog[]>([]);
+
+  useEffect(() => {
+    const load = async () => {
+      try {
+        const res = await fetch("/api/blogs?limit=3", { cache: "no-store" });
+        const data = await res.json();
+        setPosts(data?.blogs || []);
+      } catch (_error) {
+        setPosts([]);
+      }
+    };
+    load();
+  }, []);
 
   return (
     <section className="dark:bg-darkmode overflow-x-hidden">
@@ -39,7 +45,7 @@ const BlogSmall: React.FC = () => {
         </div>
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-12">
           {posts.slice(0, 3).map((blog, i) => (
-            <div key={i} className="w-full">
+            <div key={blog.slug || i} className="w-full">
               <BlogCard blog={blog} />
             </div>
           ))}
