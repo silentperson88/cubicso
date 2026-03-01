@@ -1,16 +1,86 @@
-import React from "react";
+"use client";
+import React, { useCallback, useEffect, useRef, useState } from "react";
 import BlogCard from "@/components/SharedComponents/Blog/blogCard";
-import { getAllPosts } from "@/utils/markdown";
+import { Blog } from "@/types/blog";
+
+const PAGE_SIZE = 50;
 
 const BlogList: React.FC = () => {
-  const posts = getAllPosts([
-    "title",
-    "date",
-    "type",
-    "excerpt",
-    "coverImage",
-    "slug",
-  ]);
+  const [posts, setPosts] = useState<Blog[]>([]);
+  const [loadingInitial, setLoadingInitial] = useState(true);
+  const [loadingMore, setLoadingMore] = useState(false);
+  const [hasMore, setHasMore] = useState(true);
+  const [offset, setOffset] = useState(0);
+  const sentinelRef = useRef<HTMLDivElement | null>(null);
+  const fetchingRef = useRef(false);
+
+  const loadPage = useCallback(async (startOffset: number) => {
+    if (fetchingRef.current) {
+      return;
+    }
+
+    fetchingRef.current = true;
+    const isInitial = startOffset === 0;
+
+    if (isInitial) {
+      setLoadingInitial(true);
+    } else {
+      setLoadingMore(true);
+    }
+
+    try {
+      const res = await fetch(`/api/blogs?limit=${PAGE_SIZE}&offset=${startOffset}`, {
+        cache: "no-store",
+      });
+      const data = await res.json();
+      const nextPosts = Array.isArray(data?.blogs) ? data.blogs : [];
+
+      setPosts((prev) => (isInitial ? nextPosts : [...prev, ...nextPosts]));
+      setOffset(startOffset + nextPosts.length);
+      setHasMore(nextPosts.length === PAGE_SIZE);
+    } catch (_error) {
+      if (isInitial) {
+        setPosts([]);
+      }
+      setHasMore(false);
+    } finally {
+      if (isInitial) {
+        setLoadingInitial(false);
+      } else {
+        setLoadingMore(false);
+      }
+      fetchingRef.current = false;
+    }
+  }, []);
+
+  useEffect(() => {
+    loadPage(0);
+  }, [loadPage]);
+
+  useEffect(() => {
+    if (!hasMore) {
+      return;
+    }
+
+    const target = sentinelRef.current;
+    if (!target) {
+      return;
+    }
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        if (entries[0]?.isIntersecting && !fetchingRef.current) {
+          loadPage(offset);
+        }
+      },
+      {
+        rootMargin: "600px 0px",
+      }
+    );
+
+    observer.observe(target);
+    return () => observer.disconnect();
+  }, [hasMore, offset, loadPage]);
 
   return (
     <section
@@ -38,16 +108,27 @@ const BlogList: React.FC = () => {
               </p>
             </div>
             <span className="rounded-full border border-primary/20 bg-white px-4 py-2 text-14 font-semibold text-primary">
-              {posts.length} Articles
+              {loadingInitial ? "Loading..." : `${posts.length} Loaded`}
             </span>
           </div>
 
           <div className="grid grid-cols-12 gap-7 lg:gap-8">
             {posts.map((blog, i) => (
-              <div key={i} className="w-full md:col-span-6 col-span-12">
+              <div key={blog.slug || i} className="w-full lg:col-span-4 md:col-span-6 col-span-12">
                 <BlogCard blog={blog} />
               </div>
             ))}
+          </div>
+
+          <div ref={sentinelRef} className="mt-10 flex justify-center">
+            {loadingMore && (
+              <span className="rounded-full border border-primary/25 bg-white px-4 py-2 text-14 font-semibold text-primary">
+                Loading more articles...
+              </span>
+            )}
+            {!hasMore && posts.length > 0 && (
+              <span className="text-14 font-medium text-muted">You have reached the end of the list.</span>
+            )}
           </div>
         </div>
       </div>

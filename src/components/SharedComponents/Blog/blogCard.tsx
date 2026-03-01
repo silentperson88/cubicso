@@ -3,6 +3,7 @@ import Image from "next/image";
 import { Blog } from "@/types/blog";
 import { format } from "date-fns";
 import Link from "next/link";
+import { buildBlogDetailHref } from "@/utils/blogNavigation";
 
 const getToneClasses = (type?: string) => {
   const value = (type || "").toLowerCase();
@@ -70,11 +71,21 @@ const getToneClasses = (type?: string) => {
 };
 
 const BlogCard = ({ blog }: { blog: Blog }) => {
-  const { title, coverImage, type, excerpt, date, slug } = blog;
+  const { title, coverImage, type, description, date, slug } = blog;
   const tone = getToneClasses(type);
+  const detailHref = buildBlogDetailHref(slug, {
+    id: blog.id,
+    slug,
+    title,
+    description,
+    type,
+    coverImage,
+    date,
+    createdAt: blog.createdAt,
+  });
   return (
     <article className={`group h-full overflow-hidden rounded-2xl border bg-white shadow-[0_12px_30px_rgba(47,115,242,0.12)] transition-all duration-300 hover:-translate-y-1 ${tone.card}`}>
-      <Link href={`/blog/${slug}`} aria-label="blog cover" className="block">
+      <Link href={detailHref} aria-label="blog cover" className="block">
         <div className="relative h-[240px] overflow-hidden">
           <Image
             src={coverImage!}
@@ -98,16 +109,28 @@ const BlogCard = ({ blog }: { blog: Blog }) => {
       <div className="p-6">
         <div>
           <Link
-            href={`/blog/${slug}`}
+            href={detailHref}
             className="text-22 font-semibold leading-8 text-midnight_text transition-colors group-hover:text-primary"
           >
             {title}
           </Link>
         </div>
-        {excerpt && <p className="mt-3 text-16 leading-7 text-muted">{excerpt}</p>}
+        {description && (
+          <p
+            className="mt-3 text-16 leading-7 text-muted"
+            style={{
+              display: "-webkit-box",
+              WebkitLineClamp: 3,
+              WebkitBoxOrient: "vertical",
+              overflow: "hidden",
+            }}
+          >
+            {description}
+          </p>
+        )}
         <div className="mt-5">
           <Link
-            href={`/blog/${slug}`}
+            href={detailHref}
             className={`inline-flex items-center rounded-full border px-4 py-2 text-14 font-semibold transition-colors ${tone.button}`}
           >
             Read Insight

@@ -1,22 +1,19 @@
-import { getAllPosts, getPostBySlug } from "@/utils/markdown";
+import { fetchBlogBySlug } from "@/lib/blogApi";
 import markdownToHtml from "@/utils/markdownToHtml";
+import { parseBlogFromSearchParam } from "@/utils/blogNavigation";
 import { format } from "date-fns";
 import Image from "next/image";
-import Link from "next/link";
+import { notFound } from "next/navigation";
 
 type Props = {
   params: { slug: string };
 };
 
-export async function generateMetadata({ params }: any) {
+export async function generateMetadata({ params, searchParams }: any) {
   const data = await params;
-  const posts = getAllPosts(["title", "date", "excerpt", "coverImage", "slug"]);
-  const post = getPostBySlug(data.slug, [
-    "title",
-    "author",
-    "content",
-    "metadata",
-  ]);
+  const query = (await searchParams) || {};
+  const passedPost = parseBlogFromSearchParam(query?.data, data.slug);
+  const post = passedPost || (await fetchBlogBySlug(data.slug));
 
   const siteName = process.env.SITE_NAME || "Your Site Name";
   const authorName = process.env.AUTHOR_NAME || "Your Author Name";
@@ -61,173 +58,104 @@ export async function generateMetadata({ params }: any) {
   }
 }
 
-export default async function Post({ params }: any) {
+export default async function Post({ params, searchParams }: any) {
   const data = await params;
-  const posts = getAllPosts(["title", "date", "excerpt", "coverImage", "slug"]);
-  const post = getPostBySlug(data.slug, [
-    "title",
-    "author",
-    "authorImage",
-    "content",
-    "coverImage",
-    "date",
-  ]);
+  const query = (await searchParams) || {};
+  const passedPost = parseBlogFromSearchParam(query?.data, data.slug);
+  const post = passedPost || (await fetchBlogBySlug(data.slug));
+  if (!post) {
+    notFound();
+  }
 
-  const content = await markdownToHtml(post.content || "");
+  const content = await markdownToHtml(post.description || "");
+  const category = post.type || "Insight";
+  const postDate = post.date || new Date().toISOString();
+  const wordCount = (post.description || "").trim().split(/\s+/).filter(Boolean).length;
+  const readTime = Math.max(1, Math.ceil(wordCount / 180));
 
   return (
     <>
-      <section className="relative pt-44 z-1 pb-20 dark:bg-dark dark:bg-darkmode">
-        <div className="w-full h-full absolute -z-1 bg-heroBg rounded-b-[119px] -left-1/4 top-0 dark:bg-search"></div>
-        <div className="container lg:max-w-(--breakpoint-xl) md:max-w-(--breakpoint-md) mx-auto px-4">
-          <div className="grid md:grid-cols-12 grid-cols-1 items-center">
-            <div className="col-span-8">
-              <div className="flex flex-col sm:flex-row">
-                <span className="text-base text-midnight_text font-medium dark:text-white pr-7 border-r border-solid border-grey dark:border-white w-fit">
-                  {format(new Date(post.date), "dd MMM yyyy")}
-                </span>
-                <span className="text-base text-midnight_text font-medium dark:text-white sm:pl-7 pl-0 w-fit">
-                  13 Comments
-                </span>
-              </div>
-              <h2 className="text-midnight_text dark:text-white text-[40px] leading-tight font-bold pt-7">
-                {post.title}
-              </h2>
+      <section className="relative z-1 overflow-hidden pb-14 pt-40 dark:bg-dark dark:bg-darkmode md:pb-16">
+        <div className="absolute inset-0 -z-1 bg-[linear-gradient(135deg,#eef7ff_0%,#e6f1ff_34%,#f4fbff_68%,#ffffff_100%)] dark:bg-search"></div>
+        <div className="pointer-events-none absolute -left-20 top-14 h-60 w-60 rounded-full bg-primary/18 blur-3xl"></div>
+        <div className="pointer-events-none absolute right-0 top-20 h-64 w-64 rounded-full bg-cyan-300/22 blur-3xl"></div>
+        <div className="pointer-events-none absolute bottom-0 left-1/3 h-56 w-56 rounded-full bg-amber-200/20 blur-3xl"></div>
+
+        <div className="container mx-auto px-4 md:max-w-(--breakpoint-md) lg:max-w-(--breakpoint-xl)">
+          <div className="mx-auto max-w-[980px]">
+            <div className="inline-flex items-center rounded-full border border-primary/18 bg-white/80 px-4 py-1.5 text-13 font-semibold uppercase tracking-[0.12em] text-primary">
+              Field Briefing
             </div>
-            <div className="flex items-center md:justify-center justify-start gap-6 col-span-4 pt-4 md:pt-0">
-              <Image
-                src={post.authorImage}
-                alt="image"
-                className="bg-no-repeat bg-contain inline-block rounded-full w-20! h-20!"
-                width={40}
-                height={40}
-                layout="responsive"
-                quality={100}
-              />
-              <div className="">
-                <span className="text-[22px] leading-tight font-bold text-midnight_text dark:text-white">
-                  Silicaman
-                </span>
-                <p className="text-xl text-gray dark:text-white">Author</p>
-              </div>
+            <h1 className="pt-6 text-35 font-semibold leading-tight text-midnight_text md:text-50">
+              {post.title}
+            </h1>
+            <p className="mt-4 max-w-[850px] text-18 leading-8 text-muted">
+              Structured insight from live execution programs across infrastructure, energy, robotics, and advisory operations.
+            </p>
+
+            <div className="mt-7 flex flex-wrap items-center gap-3">
+              <span className="inline-flex items-center rounded-full border border-primary/22 bg-white px-4 py-2 text-14 font-semibold text-midnight_text shadow-[0_8px_20px_rgba(47,115,242,0.10)]">
+                {format(new Date(postDate), "dd MMM yyyy")}
+              </span>
+              <span className="inline-flex items-center rounded-full border border-primary/25 bg-primary/10 px-4 py-2 text-14 font-semibold text-primary">
+                {category}
+              </span>
+              <span className="inline-flex items-center rounded-full border border-cyan-400/30 bg-cyan-50 px-4 py-2 text-14 font-semibold text-cyan-700">
+                {readTime} min read
+              </span>
             </div>
           </div>
         </div>
       </section>
-      <section className="pb-10 pt-20 dark:bg-dark lg:pb-20 dark:bg-darkmode">
-        <div className="container lg:max-w-(--breakpoint-xl) md:max-w-(--breakpoint-md) mx-auto px-4">
-          <div className="-mx-4 flex flex-wrap justify-center">
-            <div className="w-full px-4">
-              <div className="z-20 mb-16 h-150 overflow-hidden rounded-sm md:h-45">
+
+      <section className="relative pb-14 dark:bg-dark dark:bg-darkmode lg:pb-20">
+        <div className="container mx-auto px-4 md:max-w-(--breakpoint-md) lg:max-w-(--breakpoint-xl)">
+          <div className="mx-auto max-w-[1100px]">
+            <div className="-mt-6 rounded-[28px] border border-primary/18 bg-white/95 p-3 shadow-[0_24px_56px_rgba(16,45,71,0.16)] backdrop-blur-sm md:-mt-8 md:p-4">
+              <div className="h-[300px] overflow-hidden rounded-3xl md:h-[430px] lg:h-[580px]">
                 <Image
-                  src={post.coverImage}
-                  alt="image"
+                  src={post.coverImage || "/images/blog/blog_1.png"}
+                  alt={post.title || "Blog cover image"}
                   width={1170}
                   height={766}
                   quality={100}
-                  className="h-full w-full object-cover object-center rounded-3xl"
+                  className="h-full w-full object-cover object-center"
                 />
               </div>
-              <div className="-mx-4 flex flex-wrap">
-                <div className="w-full px-4 lg:w-8/12">
-                  <div className="blog-details markdown xl:pr-10">
-                    <div dangerouslySetInnerHTML={{ __html: content }}></div>
-                  </div>
-                </div>
-                <div className="w-full px-4 lg:w-4/12">
-                  <div>
-                    <div className="-mx-4 mb-8 flex flex-col">
-                      <div className="w-full py-12 px-11 bg-white dark:bg-dark_b shadow-lg border-b-2 border-border dark:border-dark_border rounded-t-lg">
-                        <h2
-                          className="wow fadeInUp relative mb-5 text-2xl dark:text-white text-black  sm:text-3xl"
-                          data-wow-delay=".1s"
-                        >
-                          Share
-                        </h2>
-                        <div className="flex gap-4 flex-col">
-                          <Link
-                            href="#"
-                            className="bg-[#526fa3] py-4 px-6 text-20 rounded-lg flex items-center text-white"
-                          >
-                            <svg
-                              className="svg-inline--fa fa-facebook-f me-3"
-                              aria-hidden="true"
-                              focusable="false"
-                              data-prefix="fab"
-                              data-icon="facebook-f"
-                              role="img"
-                              xmlns="http://www.w3.org/2000/svg"
-                              viewBox="0 0 320 512"
-                              width="12.5px"
-                              height="20px"
-                            >
-                              <path
-                                fill="white"
-                                d="M80 299.3V512H196V299.3h86.5l18-97.8H196V166.9c0-51.7 20.3-71.5 72.7-71.5 16.3 0 29.4 .4 37 1.2V7.9C291.4 4 256.4 0 236.2 0 129.3 0 80 50.5 80 159.4v42.1H14v97.8H80z"
-                              />
-                            </svg>
-                            Facebook
-                          </Link>
-                          <Link
-                            href="#"
-                            className="bg-[#46C4FF] py-4 px-6 text-20 rounded-lg flex items-center text-white"
-                          >
-                            <svg
-                              className="svg-inline--fa fa-twitter me-3"
-                              aria-hidden="true"
-                              focusable="false"
-                              data-prefix="fab"
-                              data-icon="twitter"
-                              role="img"
-                              xmlns="http://www.w3.org/2000/svg"
-                              viewBox="0 0 512 512"
-                              height="21.5px"
-                              width="25px"
-                            >
-                              <path
-                                fill="currentColor"
-                                d="M459.4 151.7c.325 4.548.325 9.097.325 13.745 0 140.966-107.416 303.213-303.213 303.213-60.452 0-116.426-17.781-163.725-48.265 8.447.974 16.568 1.299 25.34 1.299 50.236 0 96.56-17.206 133.26-46.258-46.832-.975-86.185-31.188-99.675-72.772 6.498.974 12.995 1.624 19.818 1.624 9.421 0 18.843-1.3 27.614-3.573-48.828-9.797-85.417-52.628-85.417-103.766v-1.299c14.33 7.92 30.748 12.67 48.364 13.32-28.264-18.843-46.832-51.014-46.832-87.391 0-19.492 5.197-37.36 14.33-52.954 51.655 63.675 129.3 105.258 216.365 109.807-1.624-7.794-2.599-15.91-2.599-24.029 0-57.502 46.833-104.335 104.334-104.335 30.137 0 57.502 12.67 76.67 33.137 23.715-4.548 46.182-13.32 66.599-25.34-7.793 24.366-24.366 44.833-46.182 57.502 21.117-2.273 41.584-8.122 60.426-16.243-14.292 20.791-32.161 39.308-52.628 54.253z"
-                              />
-                            </svg>
-                            twitter
-                          </Link>
-                          <Link
-                            href="#"
-                            className="bg-[#3C86AD] py-4 px-6 flex items-center text-20 rounded-lg text-white"
-                          >
-                            <svg
-                              className="svg-inline--fa fa-linkedin-in me-3"
-                              aria-hidden="true"
-                              focusable="false"
-                              data-prefix="fab"
-                              data-icon="linkedin-in"
-                              role="img"
-                              xmlns="http://www.w3.org/2000/svg"
-                              viewBox="0 0 448 512"
-                              width="21.5px"
-                              height="25px"
-                            >
-                              <path
-                                fill="currentColor"
-                                d="M100.28 448H7.4V148.9h92.78zM53.79 108.1C24.09 108.1 0 83.79 0 54.14 0 24.37 24.09 0 53.79 0 83.3 0 107.6 24.37 107.6 54.14c.1 29.64-24.2 53.96-53.81 53.96zM447.4 448h-92.68V302.4c0-34.7-.7-79.29-48.32-79.29-48.32 0-55.7 37.72-55.7 76.79V448H157.3V148.9h88.94v40.8h1.28c12.4-23.41 42.62-48.32 87.76-48.32 93.9 0 111.18 61.81 111.18 142.3V448z"
-                              />
-                            </svg>
-                            linkedin
-                          </Link>
-                        </div>
-                      </div>
-                      <div className="w-full py-12 px-11 bg-white dark:bg-dark_b shadow-lg rounded-b-lg">
-                        <p className="text-24 mb-4">Join our Newsletter</p>
-                        <input
-                          placeholder="Email address"
-                          className="p-3 dark:bg-search border border-border dark:border-dark_border rounded-lg mb-2 w-full focus:outline-0 focus:border-primary dark:focus:border-primary"
-                        />
-                        <button className="bg-primary w-full px-7 border text-base text-white border-primary py-4 rounded-sm hover:bg-transparent hover:text-primary">
-                          Subscribe
-                        </button>
-                      </div>
+            </div>
+
+            <div className="mt-10 grid gap-8 lg:grid-cols-[220px_1fr]">
+              <aside className="lg:sticky lg:top-28 lg:h-fit">
+                <div className="rounded-2xl border border-primary/15 bg-[linear-gradient(145deg,#ffffff_0%,#f2f8ff_100%)] p-5 shadow-[0_10px_28px_rgba(47,115,242,0.10)]">
+                  <p className="text-13 font-semibold uppercase tracking-[0.12em] text-primary">Article Snapshot</p>
+                  <div className="mt-4 space-y-4">
+                    <div>
+                      <p className="text-13 font-semibold uppercase tracking-[0.08em] text-muted">Category</p>
+                      <p className="mt-1 text-16 font-semibold text-midnight_text">{category}</p>
+                    </div>
+                    <div>
+                      <p className="text-13 font-semibold uppercase tracking-[0.08em] text-muted">Published</p>
+                      <p className="mt-1 text-16 font-semibold text-midnight_text">
+                        {format(new Date(postDate), "dd MMM yyyy")}
+                      </p>
+                    </div>
+                    <div>
+                      <p className="text-13 font-semibold uppercase tracking-[0.08em] text-muted">Read Time</p>
+                      <p className="mt-1 text-16 font-semibold text-midnight_text">{readTime} min</p>
                     </div>
                   </div>
+                </div>
+              </aside>
+
+              <div className="rounded-[26px] border border-primary/12 bg-white p-6 shadow-[0_16px_40px_rgba(16,45,71,0.10)] md:p-8 lg:p-10">
+                <div className="blog-details markdown text-midnight_text">
+                  {content ? (
+                    <div dangerouslySetInnerHTML={{ __html: content }}></div>
+                  ) : (
+                    <p className="text-18 leading-8 text-muted">
+                      Description is not available for this article yet.
+                    </p>
+                  )}
                 </div>
               </div>
             </div>
